@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
 
-Route::get('/home', function(){
+Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
 
 Route::get('/admin/categories', 'Admin\CategoriesController@index')->name('admin.categories');
-
+Route::get('/admin/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('index');
 
 Auth::routes();
