@@ -23,7 +23,9 @@ Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
 
-Route::get('/admin/categories', 'Admin\CategoriesController@index')->name('admin.categories');
-Route::get('/admin/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('index');
+//Route::get('/admin/categories', 'Admin\CategoriesController@index')->name('admin.categories');
+Route::get('/admin/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories.index');
+
+Route::post('/admin/categories/store', [App\Http\Controllers\Admin\CategoriesController::class, 'store'])->name('admin.categories.store');
 
 Auth::routes();

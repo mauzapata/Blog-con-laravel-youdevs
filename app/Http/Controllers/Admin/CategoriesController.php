@@ -11,9 +11,14 @@ class CategoriesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         return view('admin.categories.index');
+    }
+    public function store(Request $request)
+    {
+        dd($request->category);
+        dd($request->all());
     }
 }
