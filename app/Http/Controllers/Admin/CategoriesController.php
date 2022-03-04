@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Models\Category;
+use App\Models\Category;
 
 
 class CategoriesController extends Controller
@@ -16,17 +16,21 @@ class CategoriesController extends Controller
 
     public function index()
     {
+        //dd(\App\Models\Models\Category::all());
 
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index', ['categories' => $categories]);
     }
+
 
     public function store(Request $request)
     {
         $newCategory = new Category();
 
         $newCategory->name = $request->name;
+        $newCategory->save();
 
-        dd($request->category);
-        dd($request->all());
+
+        return redirect()->back();
     }
 }
