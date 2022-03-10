@@ -45,14 +45,19 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <button class="btn btn-warning">Editar</button>
+
                                     <button class="btn btn-danger">Eliminar</button>
-                                    <button class="btn btn-success">Eliminar</button>
+
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-category-{{$category->id}}">
+                                        Editar
+                                    </button>
 
                                 </td>
 
 
                             </tr>
+                            <!-- modal - UPDATE CATEGORY -->
+                            @include('admin.categories.modal-update-category')
 
                             @endforeach
 
@@ -61,6 +66,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Categoria</th>
+                                <th>Acciones</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -101,19 +107,21 @@
         </div>
         <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-@stop
+    <!-- /.modal-UPDATE-CATEGORY -->
 
-@section('js')
-<script>
-    $(document).ready(function() {
-        $('#categories').DataTable({
-            "order": [
-                [3, "desc"]
-            ]
+
+
+    <!-- /.modal -->
+    @stop
+
+    @section('js')
+    <script>
+        $(document).ready(function() {
+            $('#categories').DataTable({
+                "order": [
+                    [3, "desc"]
+                ]
+            });
         });
-    });
-</script>
-@stop
+    </script>
+    @stop
